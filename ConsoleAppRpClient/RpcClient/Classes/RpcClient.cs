@@ -22,8 +22,6 @@ namespace RpcClient.Classes
         private string response;
         private AutoResetEvent waitHandle  = new AutoResetEvent(false);
 
-        public delegate void ResultHandler(object model, BasicDeliverEventArgs ea);
-
 
         public RpcClient()
         {
@@ -52,10 +50,6 @@ namespace RpcClient.Classes
             Console.WriteLine("Message Get  --> " + response);
             waitHandle.Set();
             return Task.FromResult<string>(response);
-        }
-        public static void OnResult(object sender, BasicDeliverEventArgs args)
-        {
-            Console.WriteLine();
         }
         public string Call(string message)
         {

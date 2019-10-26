@@ -1,0 +1,46 @@
+﻿@model MessagingModel
+
+@{
+    ViewData["Title"] = "Messaging";
+}
+
+<div class="text-center">
+    <h3>  Messaging </h3>
+    @using (Html.BeginForm("Messaging", "Home", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m._ResultModel.Request, "Enter a message")
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m._ResultModel.Request)
+        </div>
+        <input id="submit" type="submit" class="btn btn-secondary" value="send" />
+    }
+
+    <table id="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Request")
+                </th>
+                <th>
+                    @Html.DisplayName("Response")
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._ListModel.Items)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Request)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Response)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
